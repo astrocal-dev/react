@@ -1,6 +1,18 @@
 # @astrocal/react
 
-React SDK for [Astrocal](https://astrocal.dev) — Provider, hooks, API client, and embeddable booking widget for React apps.
+**Add scheduling to your React app in minutes.** The official React SDK for [Astrocal](https://astrocal.dev) — the API-first scheduling platform built for developers.
+
+Typed API client, React hooks, context provider, and an embeddable booking widget. Everything you need to build scheduling into your React or Next.js application.
+
+[Get started free](https://astrocal.dev/signup) | [Documentation](https://astrocal.dev/docs) | [API Reference](https://astrocal.dev/docs/api-reference)
+
+## Why Astrocal for React?
+
+- **Typed end-to-end** — Every API response is fully typed. Autocomplete for event types, bookings, availability, webhooks, and more.
+- **Provider + hooks pattern** — Wrap your app in `AstrocalProvider`, then use `useAstrocal()` anywhere. Familiar React patterns.
+- **Built-in booking widget** — `<AstrocalWidget>` renders a complete booking experience — inline or popup. Bring your own UI, or use ours.
+- **Works with Next.js** — App Router and Pages Router. `"use client"` directives included automatically.
+- **Standalone mode** — Use `AstrocalApiClient` without React context in server components, API routes, or scripts.
 
 ## Installation
 
@@ -10,7 +22,7 @@ npm install @astrocal/react
 pnpm add @astrocal/react
 ```
 
-For the widget component, also install the optional peer dependency:
+For the booking widget component, also install the optional peer dependency:
 
 ```bash
 npm install @astrocal/widget
@@ -63,7 +75,7 @@ function EventTypesList() {
 
 ### Standalone Client
 
-Use the API client without React context:
+Use the API client without React context — perfect for server components, API routes, and scripts:
 
 ```ts
 import { AstrocalApiClient } from "@astrocal/react";
@@ -79,9 +91,9 @@ const { slots } = await client.availability.query({
 });
 ```
 
-## Widget Component
+## Booking Widget
 
-The `AstrocalWidget` component wraps `@astrocal/widget` for seamless React integration.
+The `AstrocalWidget` component wraps [`@astrocal/widget`](https://www.npmjs.com/package/@astrocal/widget) for seamless React integration. Inline or popup, themed to your brand.
 
 ### Inline Mode
 
@@ -124,18 +136,18 @@ function BookButton() {
 
 | Prop               | Type                          | Default                      | Description                   |
 | ------------------ | ----------------------------- | ---------------------------- | ----------------------------- |
-| `eventTypeId`      | `string`                      | —                            | Event type UUID (required)    |
+| `eventTypeId`      | `string`                      | ---                          | Event type UUID (required)    |
 | `mode`             | `"inline" \| "popup"`         | `"inline"`                   | Render mode                   |
 | `apiUrl`           | `string`                      | `"https://api.astrocal.dev"` | API base URL                  |
 | `timezone`         | `string`                      | auto-detect                  | IANA timezone                 |
-| `theme`            | `ThemeConfig`                 | —                            | CSS custom property overrides |
+| `theme`            | `ThemeConfig`                 | ---                          | CSS custom property overrides |
 | `colorScheme`      | `"light" \| "dark" \| "auto"` | `"auto"`                     | Color scheme                  |
 | `demo`             | `boolean`                     | `false`                      | Demo mode (mock data)         |
-| `onBookingCreated` | `(booking) => void`           | —                            | Booking success callback      |
-| `onError`          | `(error) => void`             | —                            | Error callback                |
-| `onClose`          | `() => void`                  | —                            | Popup close callback          |
-| `className`        | `string`                      | —                            | Container CSS class           |
-| `style`            | `CSSProperties`               | —                            | Container inline styles       |
+| `onBookingCreated` | `(booking) => void`           | ---                          | Booking success callback      |
+| `onError`          | `(error) => void`             | ---                          | Error callback                |
+| `onClose`          | `() => void`                  | ---                          | Popup close callback          |
+| `className`        | `string`                      | ---                          | Container CSS class           |
+| `style`            | `CSSProperties`               | ---                          | Container inline styles       |
 
 ## API Client Methods
 
@@ -193,7 +205,7 @@ client.apiKeys.revoke(id); // DELETE /v1/api-keys/:id
 
 ## Error Handling
 
-All API errors throw `AstrocalError`:
+All API errors throw `AstrocalError` with typed fields:
 
 ```ts
 import { AstrocalError } from "@astrocal/react";
@@ -237,6 +249,28 @@ import type {
   AstrocalClient,
 } from "@astrocal/react";
 ```
+
+## Part of the Astrocal Platform
+
+This React SDK is one of several ways to integrate [Astrocal scheduling](https://astrocal.dev) into your product:
+
+- **[Embeddable Widget](https://www.npmjs.com/package/@astrocal/widget)** (`@astrocal/widget`) — Framework-agnostic booking widget for any website
+- **[MCP Server](https://www.npmjs.com/package/@astrocal/mcp-server)** (`@astrocal/mcp-server`) — Let AI agents book meetings via the Model Context Protocol
+- **[REST API](https://astrocal.dev/docs/api-reference)** — Full scheduling API with OpenAPI 3.1 spec
+- **[Webhooks](https://astrocal.dev/docs/guides/webhooks)** — Real-time notifications for booking lifecycle events
+- **[Dashboard](https://astrocal.dev/dashboard)** — Manage event types, bookings, team members, and billing
+
+[Create a free account](https://astrocal.dev/signup) to get started.
+
+## Links
+
+- [Astrocal Website](https://astrocal.dev)
+- [Documentation](https://astrocal.dev/docs)
+- [API Reference](https://astrocal.dev/docs/api-reference)
+- [Dashboard](https://astrocal.dev/dashboard)
+- [Pricing](https://astrocal.dev/pricing)
+- [GitHub](https://github.com/astrocal-dev/react)
+- [Issues](https://github.com/astrocal-dev/react/issues)
 
 ## License
 
